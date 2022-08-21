@@ -1,3 +1,14 @@
+This is a minimalist Ethereum starter project.
+
+It has fewer moving parts than things like scaffold-eth.
+
+Start from `master` for a tutorial experience. You can also skip ahead:
+
+- `step1` has a working contract
+- `step2` adds a more thorough test
+- `step3` shows deploys to a chain and verifies to Etherscan
+- finally, `bonus-web-ui` adds a basic web UI using ethers and RainbowKit
+
 ## Quick start
 
 Install Foundry:
