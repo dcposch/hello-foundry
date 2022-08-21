@@ -9,6 +9,8 @@ Start from `master` for a tutorial experience. You can also skip ahead:
 - `step3` shows deploys to a chain and verifies to Etherscan
 - finally, `bonus-web-ui` adds a basic web UI using ethers and RainbowKit
 
+<img width="956" alt="screenshot" src="https://user-images.githubusercontent.com/169280/185814069-312cd9d6-ae4d-4e9f-8e35-cb5cb2a83081.png">
+
 ## Quick start
 
 Install Foundry:
