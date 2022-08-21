@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "test": "ts-node node_modules/tape/bin/tape src/**/*.test.ts",
+    "start": "esbuild src/app.tsx --bundle --servedir=www/ --outdir=www/dist --sourcemap",
+    "build": "esbuild src/app.tsx --bundle --minify --outdir=www/dist",
+    "codegen": "typechain --target=ethers-v5 ../contracts/out/Counter.sol/Counter.json"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "^0.4.8",
+    "@typechain/ethers-v5": "^10.0.0",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/tape": "^4.13.2",
+    "esbuild": "^0.15.1",
+    "ethers": "^5.6.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "tape": "^5.5.3",
+    "ts-node": "^10.9.1",
+    "typechain": "^8.0.0",
+    "typescript": "^4.7.4",
+    "wagmi": "^0.6.2"
+  }
+}
