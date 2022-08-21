@@ -1,6 +1,6 @@
 ## Quick start
 
-Clone this repo. Install Foundry:
+Install Foundry:
 
 ```
 curl -L https://foundry.paradigm.xyz | bash
@@ -13,6 +13,8 @@ foundryup
 > with Ethereum and the EVM. Finally, `anvil` is a local Ethereum node built for
 > development.
 
+Clone this repo. `git clone ... && cd hello-foundry`.
+
 Next, create your contracts package.
 
 ```
@@ -21,13 +23,14 @@ cd package/contracts
 forge init --no-commit
 ```
 
-Run `forge test`. This compiles a sample contract, a sample test, both written in Solidity, and runs the tests.
+Run `forge test`. This compiles a sample contract and test contract, both written in Solidity, and runs the tests.
 
 Make a commit.
 
 ## Next steps
 
 Next, we'll make sure all systems are working:
+
 - VSCode configured correctly
 - Edit the contract and run `forge build`
 - Edit the tests and run `forge test`
@@ -35,6 +38,58 @@ Next, we'll make sure all systems are working:
 - Use `--verify` to verify to Etherscan.
 - Finally, we'll use the Etherscan UI to run the live contract.
 
+## Edit and test
+
+Modify the contract so that `increment()` increments by two instead of one.
+
+The tests should now fail: `forge test -vvv`. You can always add `v`s to get more verbose output.
+
+Fix the tests, and verify that they work again. For bonus points, use `vm.expectRevert` to test the case where the counter overflows.
+
+## Deploy and verify
+
+Rename the script to `Deploy.s.sol` and simply call the constructor to deploy
+our contract:
+
+```
+vm.startBroadcast();
+new Counter();
+```
+
+Now, we can deploy to a testnet.
+
+**Prerequisite: set up Alchemy and Etherscan.** Create an account with Alchemy
+and get your testnet RPC URL. I recommend the Goerli testnet. Create an account
+with Etherscan and get your API key. Save both as environment variables.
+
+**Create a burner wallet for deployment.** Save the hex private key. It goes
+without saying, but this wallet should never hold significant value. Use it for
+testnet operations. I use one with small amounts of eth for mainnet deployment.
+
+In your shell (`.bashrc`/`.zshrc`/etc), add:
+
+```
+export ETH_RPC_API=<...>
+export ETHERSCAN_API_KEY=<...>
+export ETH_PK=<...>
+```
+
+1.  **Test the script locally**
+
+    ```
+    forge script DeployScript -f $ETH_RPC_URL
+    ```
+
+2.  **Deploy to testnet**
+
+    ```
+    forge script DeployScript -f $ETH_RPC_URL --broadcast --private-key=$ETH_PK
+    ```
+
+3.  **Verify to Etherscan**
+    ```
+    forge script DeployScript -f $ETH_RPC_URL --verify
+    ```
 
 ## Links
 
